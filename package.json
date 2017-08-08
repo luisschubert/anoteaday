@@ -1,0 +1,20 @@
+{
+  "name": "anoteaday",
+  "version": "0.0.1",
+  "description": "a tool to take notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/luisschubert/anoteaday.git"
+  },
+  "keywords": [
+    "notes",
+    "writing",
+    "journaling"
+  ],
+  "author": "Luis Schubert",
+  "license": "ISC"
+}
