@@ -29,8 +29,8 @@
     .contentItem {
         margin:auto;
         font-size: -webkit-xx-large;
-        width: 300px;
-        height: 900px;
+        width: 600px;
+        height: 600px;
         border: 3px solid #808080;
         background: #eeeeee;
         border-radius: 10px;
@@ -77,19 +77,42 @@
         document.addEventListener('DOMContentLoaded', fn);
       }
     }
+    function newThought(){
+        var area = document.getElementById('area');
+        var comment = area.value;
+        area.value = null;
+        var uriSafeComment = encodeURI(comment);
+        var newCommentURL = '/new/' + uriSafeComment;
+        fetch(newCommentURL)  
+          .then(
+            function(response) {
+              if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                  response.status);
+                return;
+              }
+
+              // Examine the text in the response
+              response.json().then(function(data) {
+                console.log(data);
+              });
+            }
+          )
+          .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+          });
+
+        var commentObj = document.createElement('div');
+        var textarea = document.createElement('textarea');
+        textarea.classList.add('commentedArea');
+        textarea.value = comment;
+        commentObj.classList.add('contentItem');
+        commentObj.appendChild(textarea);
+        var container = document.getElementById('commentContainer');
+        container.insertBefore(commentObj, container.childNodes[0])
+    }
 
     function init(){
-        // var contentItems = document.getElementsByClassName('contentItem');
-        // var contentItemsArray = Array.from(contentItems);
-        // contentItemsArray = contentItemsArray.map(function(contentItem){
-        //     return contentItem.addEventListener('click', function(event){
-        //         // console.log(event);
-        //         // console.log('Action: '+ event.target.innerText)
-        //
-        //
-        //     })
-        // });
-        // create some object to save all pressed keys
         var keys = {
             shift: false,
             enter: false
@@ -111,7 +134,7 @@
             // reset status of the button 'released' == 'false'
             if (keys.shift && keys.enter) {
                 // or do anything else
-                submitComment();
+                newThought();
 
             }
             if (event.keyCode == 16) {
@@ -120,27 +143,6 @@
                 keys.enter = false;
             }
         });
-
-
-    }
-    function submitConsoleComment() {
-        var area = document.getElementById('area');
-        var comment = area.value;
-        area.value = null;
-        console.log(comment);
-    }
-    function submitComment() {
-        var area = document.getElementById('area');
-        var comment = area.value;
-        area.value = null;
-        var commentObj = document.createElement('div');
-        var textarea = document.createElement('textarea');
-        textarea.classList.add('commentedArea');
-        textarea.value = comment;
-        commentObj.classList.add('contentItem');
-        commentObj.appendChild(textarea);
-        var container = document.getElementById('commentContainer');
-        container.insertBefore(commentObj, container.childNodes[0])
     }
     ready(init);
     </script>

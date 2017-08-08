@@ -4,7 +4,8 @@
   "description": "a tool to take notes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
     "journaling"
   ],
   "author": "Luis Schubert",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "jsonfile": "^3.0.1",
+    "time": "^0.12.0"
+  }
 }
