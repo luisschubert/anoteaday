@@ -1,6 +1,8 @@
 # anoteaday
 a tool to make note taking easy and refreshing.
 
+![Screenshot of anoteaday](http://i.imgur.com/Z2cB3mA.png)
+
 ## inspiration:
 i love to journal but i don't love everything that gets in the way of me writing on a daily basis. i want to have one consistent medium that will allow me to express my thoughts and save them in a clear way. 
 
