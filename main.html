@@ -30,7 +30,7 @@
         margin:auto;
         font-size: -webkit-xx-large;
         width: 600px;
-        height: 600px;
+        height: 400px;
         border: 3px solid #808080;
         background: #eeeeee;
         border-radius: 10px;
@@ -83,7 +83,7 @@
         area.value = null;
         var uriSafeComment = encodeURI(comment);
         var newCommentURL = '/new/' + uriSafeComment;
-        fetch(newCommentURL)  
+        fetch(newCommentURL)
           .then(
             function(response) {
               if (response.status !== 200) {
@@ -134,6 +134,7 @@
             // reset status of the button 'released' == 'false'
             if (keys.shift && keys.enter) {
                 // or do anything else
+                debugger;
                 newThought();
 
             }
@@ -143,6 +144,32 @@
                 keys.enter = false;
             }
         });
+
+        fetch("/today")
+          .then(
+            function(response) {
+              if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +
+                  response.status);
+                return;
+              }
+
+              // Examine the text in the response
+              response.json().then(function(data) {
+                console.log(data);
+                var list = document.createElement('ul');
+                data.today.forEach(function(note){
+                    var noteItem = document.createElement('li');
+                    noteItem.appendChild(document.createTextNode(note));
+                    list.appendChild(noteItem);
+                });
+                document.getElementById('commentContainer').appendChild(list);
+              });
+            }
+          )
+          .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+          });
     }
     ready(init);
     </script>
@@ -155,7 +182,7 @@
     </div>
     <div id='commentContainer' class='contentContainer'>
         <div class='contentItem'>
-            <textarea id='area' placeholder='leave a comment'></textarea>
+            <textarea id='area' placeholder='start journaling...'></textarea>
         </div>
     </div>
 </body>

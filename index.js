@@ -17,7 +17,17 @@ app.get('/', function(req, res) {
 app.get('/new/:thought', async function(req, res) {
     var thought = req.params.thought;
     await readWriteCycle(thought);
-    res.end(thought + ' added');
+    res.end(JSON.stringify({message: thought + ' added'}));
+});
+app.get('/today', function(req, res) {
+    var dayAsKey = getDayAsKey();
+    var notes = jsonfile.readFileSync('mynotes.json');
+    if (Object.keys(notes).includes(dayAsKey)) {
+        res.end(JSON.stringify({today: notes[dayAsKey]}));
+    }
+    else {
+        res.end(JSON.stringify({today: []}));
+    }
 });
 
 function getDayAsKey(){
@@ -28,7 +38,7 @@ function getDayAsKey(){
 
 function readWriteCycle(newThought) {
     var dayAsKey = getDayAsKey();
-    var notes = jsonfile.readFileSync('notes.json');
+    var notes = jsonfile.readFileSync('mynotes.json');
     var keys = Object.keys(notes);
     if (!keys.includes(dayAsKey)) {
         notes[dayAsKey] = [newThought];
@@ -36,7 +46,7 @@ function readWriteCycle(newThought) {
     else{
         notes[dayAsKey].push(newThought);
     }
-    jsonfile.writeFileSync('notes.json', notes)
+    jsonfile.writeFileSync('mynotes.json', notes)
 }
 // app.get('/static/:name', function(req, res) {
 //     var file = req.params.name;
