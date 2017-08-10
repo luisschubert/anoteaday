@@ -4,7 +4,7 @@ var jsonfile = require('jsonfile');
 var time = require('time');
 var app = express();
 app.get('/', function(req, res) {
-    fs.readFile("main.html",function(err, data) {
+    fs.readFile("journal.html",function(err, data) {
         if(err) {
             res.statusCode = 500;
         }
@@ -29,6 +29,17 @@ app.get('/today', function(req, res) {
         res.end(JSON.stringify({today: []}));
     }
 });
+app.get('/todo', function(req, res) {
+    fs.readFile("todo.html",function(err, data) {
+        if(err) {
+            res.statusCode = 500;
+        }
+        else {
+            res.setHeader('Content-type', 'text/html');
+            res.end(data);
+        }
+    })
+})
 
 function getDayAsKey(){
     var now = new time.Date();

@@ -1,0 +1,187 @@
+<html>
+<head>
+    <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        display: flex;
+        flex-direction: column;
+    }
+    .mainHeadingContainer {
+        display: flex;
+        flex-direction: row;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        justify-content: center;
+    }
+    .mainHeadingItem {
+        font-size: -webkit-xxx-large;
+        margin: auto;
+    }
+    .contentContainer {
+        display: flex;
+        font-size: xx-large;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 90px;
+    }
+    .contentItem {
+        margin:auto;
+        font-size: xx-large;
+        width: 600px;
+        height: 100px;
+        border: 3px solid #808080;
+        background: #eeeeee;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .contentItem:hover {
+        background: #bfbfbf
+    }
+    .submitButton {
+        font-size: -webkit-xx-large;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    textarea {
+        width: inherit;
+        height: inherit;
+        resize: none;
+        font-size: medium;
+        text-align: center;
+        border: none;
+        background: #eee;
+        outline: none;
+    }
+    .commentedArea {
+        width: inherit;
+        height: inherit;
+        resize: none;
+        font-size: medium;
+        text-align: center;
+        border: none;
+        background: #eee;
+        outline: none;
+    }
+    </style>
+    <script>
+    function ready(fn) {
+      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+        fn();
+      } else {
+        document.addEventListener('DOMContentLoaded', fn);
+      }
+    }
+    // function newThought(){
+    //     var area = document.getElementById('area');
+    //     var comment = area.value;
+    //     area.value = null;
+    //     var uriSafeComment = encodeURI(comment);
+    //     var newCommentURL = '/new/' + uriSafeComment;
+    //     fetch(newCommentURL)
+    //       .then(
+    //         function(response) {
+    //           if (response.status !== 200) {
+    //             console.log('Looks like there was a problem. Status Code: ' +
+    //               response.status);
+    //             return;
+    //           }
+    //
+    //           // Examine the text in the response
+    //           response.json().then(function(data) {
+    //             console.log(data);
+    //           });
+    //         }
+    //       )
+    //       .catch(function(err) {
+    //         console.log('Fetch Error :-S', err);
+    //       });
+    //       window.location.reload();
+    // }
+
+    function init(){
+        var keys = {
+            shift: false,
+            enter: false
+        };
+
+        // document.addEventListener('keydown', function(event) {
+        //     // console.log(event);
+        // // save status of the button 'pressed' == 'true'
+        //     if (event.keyCode == 16) {
+        //         keys.shift = true;
+        //     } else if (event.keyCode == 13) {
+        //         keys.enter = true;
+        //     }
+        //
+        // });
+        //
+        // document.addEventListener('keyup',function(event) {
+        //     // console.log(event);
+        //     // reset status of the button 'released' == 'false'
+        //     if (keys.shift && keys.enter) {
+        //         // or do anything else
+        //         debugger;
+        //         newThought();
+        //
+        //     }
+        //     if (event.keyCode == 16) {
+        //         keys.shift = false;
+        //     } else if (event.keyCode == 13) {
+        //         keys.enter = false;
+        //     }
+        // });
+
+        // fetch("/today")
+        //   .then(
+        //     function(response) {
+        //       if (response.status !== 200) {
+        //         console.log('Looks like there was a problem. Status Code: ' +
+        //           response.status);
+        //         return;
+        //       }
+        //
+        //       // Examine the text in the response
+        //       response.json().then(function(data) {
+        //         console.log(data);
+        //         var list = document.createElement('ul');
+        //         data.today.forEach(function(note){
+        //             var noteItem = document.createElement('li');
+        //             noteItem.appendChild(document.createTextNode(note));
+        //             list.appendChild(noteItem);
+        //         });
+        //         document.getElementById('commentContainer').appendChild(list);
+        //       });
+        //     }
+        //   )
+        //   .catch(function(err) {
+        //     console.log('Fetch Error :-S', err);
+        //   });
+    }
+    ready(init);
+    </script>
+</head>
+<body>
+    <div class='mainHeadingContainer'>
+        <div class='mainHeadingItem'>
+            three todo
+        </div>
+    </div>
+    <div id='commentContainer' class='contentContainer'>
+        <div class='contentItem'>
+            <textarea id='area' placeholder='first thing...'></textarea>
+        </div>
+        <div class='contentItem'>
+            <textarea id='area' placeholder='second thing...'></textarea>
+        </div>
+        <div class='contentItem'>
+            <textarea id='area' placeholder='third thing...'></textarea>
+        </div>
+    </div>
+</body>
+</html>

@@ -101,15 +101,7 @@
           .catch(function(err) {
             console.log('Fetch Error :-S', err);
           });
-
-        var commentObj = document.createElement('div');
-        var textarea = document.createElement('textarea');
-        textarea.classList.add('commentedArea');
-        textarea.value = comment;
-        commentObj.classList.add('contentItem');
-        commentObj.appendChild(textarea);
-        var container = document.getElementById('commentContainer');
-        container.insertBefore(commentObj, container.childNodes[0])
+          window.location.reload();
     }
 
     function init(){
