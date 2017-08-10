@@ -1,0 +1,9 @@
+//create a element and insert it before the first child of a parent element
+var commentObj = document.createElement('div');
+var textarea = document.createElement('textarea');
+textarea.classList.add('commentedArea');
+textarea.value = comment;
+commentObj.classList.add('contentItem');
+commentObj.appendChild(textarea);
+var container = document.getElementById('commentContainer');
+container.insertBefore(commentObj, container.childNodes[0])
