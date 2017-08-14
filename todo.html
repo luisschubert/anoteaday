@@ -105,63 +105,19 @@
     // }
 
     function init(){
-        var keys = {
-            shift: false,
-            enter: false
-        };
+        document.getElementById('todo1').onchange = function(){
+            window.localStorage.setItem('todo1', document.getElementById('todo1').value);
+        }
+        document.getElementById('todo2').onchange = function(){
+            window.localStorage.setItem('todo2', document.getElementById('todo2').value);
+        }
+        document.getElementById('todo3').onchange = function(){
+            window.localStorage.setItem('todo3', document.getElementById('todo3').value);
+        }
+        document.getElementById('todo1').value = window.localStorage.getItem('todo1');
+        document.getElementById('todo2').value = window.localStorage.getItem('todo2');
+        document.getElementById('todo3').value = window.localStorage.getItem('todo3');
 
-        // document.addEventListener('keydown', function(event) {
-        //     // console.log(event);
-        // // save status of the button 'pressed' == 'true'
-        //     if (event.keyCode == 16) {
-        //         keys.shift = true;
-        //     } else if (event.keyCode == 13) {
-        //         keys.enter = true;
-        //     }
-        //
-        // });
-        //
-        // document.addEventListener('keyup',function(event) {
-        //     // console.log(event);
-        //     // reset status of the button 'released' == 'false'
-        //     if (keys.shift && keys.enter) {
-        //         // or do anything else
-        //         debugger;
-        //         newThought();
-        //
-        //     }
-        //     if (event.keyCode == 16) {
-        //         keys.shift = false;
-        //     } else if (event.keyCode == 13) {
-        //         keys.enter = false;
-        //     }
-        // });
-
-        // fetch("/today")
-        //   .then(
-        //     function(response) {
-        //       if (response.status !== 200) {
-        //         console.log('Looks like there was a problem. Status Code: ' +
-        //           response.status);
-        //         return;
-        //       }
-        //
-        //       // Examine the text in the response
-        //       response.json().then(function(data) {
-        //         console.log(data);
-        //         var list = document.createElement('ul');
-        //         data.today.forEach(function(note){
-        //             var noteItem = document.createElement('li');
-        //             noteItem.appendChild(document.createTextNode(note));
-        //             list.appendChild(noteItem);
-        //         });
-        //         document.getElementById('commentContainer').appendChild(list);
-        //       });
-        //     }
-        //   )
-        //   .catch(function(err) {
-        //     console.log('Fetch Error :-S', err);
-        //   });
     }
     ready(init);
     </script>
@@ -174,13 +130,13 @@
     </div>
     <div id='commentContainer' class='contentContainer'>
         <div class='contentItem'>
-            <textarea id='area' placeholder='first thing...'></textarea>
+            <textarea id='todo1' placeholder='first thing...'></textarea>
         </div>
         <div class='contentItem'>
-            <textarea id='area' placeholder='second thing...'></textarea>
+            <textarea id='todo2' placeholder='second thing...'></textarea>
         </div>
         <div class='contentItem'>
-            <textarea id='area' placeholder='third thing...'></textarea>
+            <textarea id='todo3' placeholder='third thing...'></textarea>
         </div>
     </div>
 </body>
